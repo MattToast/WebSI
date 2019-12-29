@@ -1,0 +1,19 @@
+/* Table of times I'm avalible */
+#schedule{
+  border-collapse: collapse;
+  border: 1px solid #dddddd;
+  width: 75%;
+  text-align: left;
+
+  transform: translateX(12.5%);
+}
+
+#schedule td, th {
+  border: 1px solid #000000;
+  text-align: left;
+  padding: 8px;
+}
+
+#schedule tr:nth-child(even){
+  background-color: #dddddd;
+}

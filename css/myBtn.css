@@ -1,0 +1,14 @@
+/* Landing Button */
+#myBtn{
+  background: #3366ff;
+  padding: 16px 80px;
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  border-radius: 20px;
+  border: none;
+}
+
+#myBtn:hover{
+  background: #737373;
+}

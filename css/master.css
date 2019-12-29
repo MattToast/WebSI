@@ -1,0 +1,48 @@
+/* Space Content */
+body,html{
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  width: 100%;
+  height: 100%;
+}
+
+/* Space Top */
+.section-top{
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  background-image: url(../res/img/grad_bg.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.content{
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.content h1{
+  color: white;
+  font-size: 60px;
+  text-decoration: none;
+}
+
+/* Space Bottom */
+.section-bottom{
+  position: relative;
+  min-height: 100%;
+  width: 75%;
+  margin: auto;
+  vertical-align: middle;
+}
+
+.schedule{
+  position: relative;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
