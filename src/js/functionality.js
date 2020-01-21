@@ -35,7 +35,7 @@ function placeFiles() {
     btn.innerHTML = "Tests";
 
     div.appendChild(head);
-    div.appendChild(btn);
+    div.appendChild(btn); 
 
     // div.style.float = "left";
     div.style.width = "100%";
