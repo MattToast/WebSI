@@ -14,23 +14,12 @@ function scrollPage() {
 function placeFiles() {
   // Get to files
 
-  // var fs = require('fs');
-  // var files = fs.readdirSync('..');
-
-  // $.ajax({
-  //   type: "POST",
-  //   url: "../python/files.py",
-  //   data: { param: text}
-  // }).done(function( o ) {
-  //   // do something
-  // });
-
   // Place Buttons for files
   var table = document.getElementById("files_table");
-  for(i = 0; i < 10; i++) {
+  for(i = 0; i < 2; i++) {
     var row = table.insertRow(1 + i);
     row.insertCell(0).innerHTML = "File Name";
-    row.insertCell(1).innerHTML = i;
+    row.insertCell(1).innerHTML = "<a href=\"./res/img/grad_bg.jpg\">Download</a>";
   }
 }
 
