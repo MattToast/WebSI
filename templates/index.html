@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
+
 <head>
   <meta charset="utf-8">
   <title>SI Resorces</title>
-  <link rel="stylesheet" href="./css/master.css">
-  <link rel="stylesheet" href="./css/myBtn.css">
-  <link rel="stylesheet" href="./css/schedule.css">
-  <link rel="stylesheet" href="./css/files.css">
+
+  <link rel="icon" href="{{url_for('static', filename='res/img/purdue_p.png')}}">
+  <link rel="stylesheet" href="{{url_for('static', filename='css/master.css')}}">
+  <link rel="stylesheet" href="{{url_for('static', filename='css/myBtn.css')}}">
+  <link rel="stylesheet" href="{{url_for('static', filename='css/schedule.css')}}">
+  <link rel="stylesheet" href="{{url_for('static', filename='css/files.css')}}">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="./src/js/functionality.js"></script>
+  <script src="{{url_for('static', filename='js/functionality.js')}}"></script>
 </head>
 
 <body>
@@ -33,7 +36,7 @@
         <tr>
           <td>SI Session</td>
           <td>Tuesday</td>
-          <td>WILYC215</td>
+          <td>SHRV 113A</td>
           <td>6:30-7:30</td>
         </tr>
         <tr>
@@ -46,7 +49,7 @@
           <td>Office Hours</td>
           <td>Friday</td>
           <td>WILY C215</td>
-          <td>2:00-2:30</td>
+          <td>3:30-4:30</td>
         </tr>
       </table>
     </div>
@@ -70,7 +73,11 @@
         Insert Text here!!
       </p>
     </div>
-  </div>
 
+    <!--
+      <a href="{{url_for('static', filename='css/master.css')}}" download>Here!!</a>
+    -->
+  </div>
 </body>
+
 </html>
