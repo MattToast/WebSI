@@ -18,14 +18,21 @@ def getFiles():
 
 
 @app.route('/control', methods=["GET", "POST"])
-def uploadFiles():
+def updateFiles():
     if request.method == "POST":
-        if request.files and request.files["image"]:
-            image = request.files["image"]
-            image.save(os.path.join("static/res/share/", image.filename))
+        if request.files and request.files["upload"]:
+            upload = request.files["upload"]
+            upload.save(os.path.join("static/res/share/", upload.filename))
 
             return redirect(request.url)
 
+        elif request.form and request.form["filename"]:
+            filename = request.form["filename"]
+            if os.path.isfile(os.path.join("static/res/share/", filename)):
+                os.remove(os.path.join("static/res/share/", filename))
+            
+            return redirect(request.url)
+            
     return render_template('control.html')
 
 
