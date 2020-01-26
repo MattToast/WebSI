@@ -75,7 +75,14 @@
     </div>
 
     <!--
-      <a href="{{url_for('static', filename='css/master.css')}}" download>Here!!</a>
+    <a href="/static/res/share/helloWorld.c" download>Here!!</a>
+
+    <a href="{{url_for('static', filename='res/share/helloWorld.c')}}" download>Here!!</a>
+
+
+    <form method="get" action="{{url_for('static', filename='css/files.css')}}">
+      <button type="submit">Download!</button>
+    </form>
     -->
   </div>
 </body>

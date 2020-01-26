@@ -1,7 +1,7 @@
 function main() {
   // What to execute when script is run
   placeFiles();
-  /// alert(window.location.pathname);
+  // alert(window.location.pathname);
 }
 
 function scrollPage() {
@@ -21,15 +21,15 @@ function placeFiles() {
       var table = document.getElementById("files_table");
       for (i = 0; i < data.files.length; i++) {
         var row = table.insertRow(1 + i);
+
+        // Make label
         row.insertCell(0).innerHTML = "<p>" + data.files[i] + "</p>";
-        row.insertCell(1).innerHTML = "Download";
+
+        // Make button
+        row.insertCell(1).innerHTML = '<a href="/static/res/share/' + data.files[i] + '" download><button>Get Now!</button></a>';
       }
     }
   });
-
-
-
-
 }
 
 $(document).ready(main);

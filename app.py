@@ -10,7 +10,7 @@ def start():
 @app.route('/files', methods=['POST'])
 def getFiles():
     listFiles = []
-    for file in os.listdir("static/res/img/"):
+    for file in os.listdir("static/res/share/"):
         listFiles.append(file)
     return jsonify({"files" : listFiles})
  
