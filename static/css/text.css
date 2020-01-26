@@ -1,0 +1,10 @@
+#contactNote{
+    width:75%;
+    transform: translateX(16%);
+    text-align: center;
+}
+
+#signed{
+    width: 90%;
+    text-align: right;
+}

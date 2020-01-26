@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="{{url_for('static', filename='css/myBtn.css')}}">
   <link rel="stylesheet" href="{{url_for('static', filename='css/schedule.css')}}">
   <link rel="stylesheet" href="{{url_for('static', filename='css/files.css')}}">
+  <link rel="stylesheet" href="{{url_for('static', filename='css/text.css')}}">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="{{url_for('static', filename='js/functionality.js')}}"></script>
 </head>
@@ -69,21 +70,18 @@
     <div class="contact" id="contact">
       <h1>Get in Contact</h1>
       <hr>
-      <p>
-        Insert Text here!!
-      </p>
+      <div id="contactNote">
+        <p>
+          This whole website is basically held together with rubber bands and string, so if you come across anythingthat
+          seems wrong, or you would like to suggest improvements for future development, please feel free to
+          contact me via email at <strong>matthewdroztextra@gmail.com</strong>. Your support helps makes this resource
+          better!
+        </p>
+
+        <p id="signed">- Matt Drozt</p>
+      </div>
+
     </div>
-
-    <!--
-    <a href="/static/res/share/helloWorld.c" download>Here!!</a>
-
-    <a href="{{url_for('static', filename='res/share/helloWorld.c')}}" download>Here!!</a>
-
-
-    <form method="get" action="{{url_for('static', filename='css/files.css')}}">
-      <button type="submit">Download!</button>
-    </form>
-    -->
   </div>
 </body>
 
