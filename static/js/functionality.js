@@ -17,17 +17,17 @@ function placeFiles() {
     url: "/files",
     type: 'POST',
     success: function (data) {
-      alert(data.name);
+      // Place Buttons for files
+      var table = document.getElementById("files_table");
+      for (i = 0; i < data.files.length; i++) {
+        var row = table.insertRow(1 + i);
+        row.insertCell(0).innerHTML = "<p>" + data.files[i] + "</p>";
+        row.insertCell(1).innerHTML = "Download";
+      }
     }
   });
 
-  // Place Buttons for files
-  var table = document.getElementById("files_table");
-  for (i = 0; i < 5; i++) {
-    var row = table.insertRow(1 + i);
-    row.insertCell(0).innerHTML = "<p>// TODO: File Name</p>";
-    row.insertCell(1).innerHTML = "<p>// TODO: Download</p>";
-  }
+
 
 
 }
