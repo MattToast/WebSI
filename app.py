@@ -20,12 +20,9 @@ def getFiles():
 @app.route('/control', methods=["GET", "POST"])
 def uploadFiles():
     if request.method == "POST":
-        if request.files:
+        if request.files and request.files["image"]:
             image = request.files["image"]
-            print(os.path.join("static/res/share/", image.filename))
             image.save(os.path.join("static/res/share/", image.filename))
-
-            print(image)
 
             return redirect(request.url)
 
