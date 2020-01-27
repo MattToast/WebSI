@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title>SI Upload</title>
+    <link rel="icon" href="{{url_for('static', filename='res/img/purdue_p.png')}}">
+</head>
+
+<body>
+    <h1>Welcome to the Matt SI Control Portal!</h1>
+    <hr>
+
+    <div class="Upload">
+        <h2>Upload File</h2>
+        <hr>
+
+        <form action="/control" method="POST" enctype="multipart/form-data">
+
+            <div class="form-group">
+                <label>Select a File</label>
+                <div class="custom-file">
+                    <input type="file" name="upload" id="upload">
+                </div>
+            </div>
+
+            <button type="submit">Upload</button>
+        </form>
+    </div>
+
+    <div class="Remove">
+        <h2>Remove File</h2>
+        <hr>
+
+        <form action="/control" method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+                <label>Type a File Name</label>
+                <div class="custom-file">
+                    <input type="text" placeholder="example.txt" name="filename" id="filename">
+                </div>
+            </div>
+
+            <button type="submit">Remove</button>
+        </form>
+    </div>
+
+    <div class="Return">
+        <h2>Return to Homepage</h2>
+        <hr>
+        <a href='/'><button>Return</button></a>
+    </div>
+</body>
+
+</html>
