@@ -1,12 +1,19 @@
 from flask import Flask, render_template, request, jsonify, redirect, make_response
 from functools import wraps
+import json
 import os
 
 app = Flask(__name__)
 
 
 def check_auth(username, password):
-    return username == 'a' and password == 's'
+    try:
+        with open('admin.json', 'r') as jsonData:
+            data = jsonData.read()
+        obj = json.loads(data)
+        return username == obj['username'] and password == obj['password']
+    except Exception:
+        return username == 'username' and password == 'password'
 
 
 def authenticate():
