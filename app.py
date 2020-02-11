@@ -4,11 +4,12 @@ import json
 import os
 
 app = Flask(__name__)
-
+appDir = os.getcwd()
+shareDir = os.path.join(appDir, "static/res/share/")
 
 def check_auth(username, password):
     try:
-        with open('admin.json', 'r') as jsonData:
+        with open(os.path.join(appDir, 'admin.json'), 'r') as jsonData:
             data = jsonData.read()
         obj = json.loads(data)
         return username == obj['username'] and password == obj['password']
@@ -38,7 +39,7 @@ def start():
 @app.route('/files', methods=['POST'])
 def getFiles():
     listFiles = []
-    for file in os.listdir("static/res/share/"):
+    for file in os.listdir(shareDir):
         listFiles.append(file)
     return jsonify({"files": listFiles})
 
@@ -49,14 +50,14 @@ def updateFiles():
     if request.method == "POST":
         if request.files and request.files["upload"]:
             upload = request.files["upload"]
-            upload.save(os.path.join("static/res/share/", upload.filename))
+            upload.save(os.path.join(shareDir, upload.filename))
 
             return redirect(request.url)
 
         elif request.form and request.form["filename"]:
             filename = request.form["filename"]
-            if os.path.isfile(os.path.join("static/res/share/", filename)):
-                os.remove(os.path.join("static/res/share/", filename))
+            if os.path.isfile(os.path.join(shareDir, filename)):
+                os.remove(os.path.join(shareDir, filename))
 
             return redirect(request.url)
 
