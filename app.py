@@ -41,6 +41,7 @@ def getFiles():
     listFiles = []
     for file in os.listdir(shareDir):
         listFiles.append(file)
+    listFiles.sort(reverse=True)
     return jsonify({"files": listFiles})
 
 
@@ -68,5 +69,5 @@ if __name__ == "__main__":
     if not os.path.exists("./static/res/share/"):
         os.mkdir("./static/res/share/")
 
-    app.run(host='0.0.0.0', port=8080)
+    app.run(host='localhost', port=8080)
     print("\nApplication Terminated")
