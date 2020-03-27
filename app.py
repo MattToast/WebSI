@@ -1,10 +1,18 @@
 from flask import Flask, render_template, request, jsonify, redirect, make_response
 from functools import wraps
+import hashlib
 import json
 import os
 
+PYTHONHASHSEED = 0
+
 app = Flask(__name__)
-appDir = os.getcwd()
+
+with open('admin.json') as jsonData:
+    data = jsonData.read()
+
+info = json.loads(data)
+appDir = info['path']
 shareDir = os.path.join(appDir, "static/res/share/")
 
 def check_auth(username, password):
@@ -12,7 +20,12 @@ def check_auth(username, password):
         with open(os.path.join(appDir, 'admin.json'), 'r') as jsonData:
             data = jsonData.read()
         obj = json.loads(data)
-        return username == obj['username'] and password == obj['password']
+        compU = str(hashlib.md5(username.encode()).hexdigest())
+        compP = str(hashlib.md5(password.encode()).hexdigest())
+        print()
+        print(compU)
+        print()
+        return compU == obj['username'] and compP == obj['password']
     except Exception:
         return username == 'username' and password == 'password'
 
