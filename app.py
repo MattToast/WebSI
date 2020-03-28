@@ -4,8 +4,6 @@ import hashlib
 import json
 import os
 
-PYTHONHASHSEED = 0
-
 app = Flask(__name__)
 
 with open('admin.json') as jsonData:

@@ -2,8 +2,6 @@ import json
 import os
 import hashlib
 
-PYTHONHASHSEED = 0
-
 if __name__ == "__main__":
     with open('admin.json', 'r') as admin:
         data = json.load(admin)
