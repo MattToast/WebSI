@@ -20,9 +20,6 @@ def check_auth(username, password):
         obj = json.loads(data)
         compU = str(hashlib.sha256(username.encode()).hexdigest())
         compP = str(hashlib.sha256(password.encode()).hexdigest())
-        print()
-        print(compU)
-        print()
         return compU == obj['username'] and compP == obj['password']
     except Exception:
         return username == 'username' and password == 'password'
