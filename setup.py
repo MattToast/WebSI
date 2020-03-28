@@ -16,8 +16,8 @@ if __name__ == "__main__":
         newPath = input('Please enter your new path:\n')
 
     data['path'] = newPath
-    data['username'] = str(hashlib.md5(input('Please enter an admin username: ').encode()).hexdigest())
-    data['password'] = str(hashlib.md5(input('Please enter an admin password: ').encode()).hexdigest())
+    data['username'] = str(hashlib.sha256(input('Please enter an admin username: ').encode()).hexdigest())
+    data['password'] = str(hashlib.sha256(input('Please enter an admin password: ').encode()).hexdigest())
 
     with open('admin.json', 'w') as admin:
         json.dump(data, admin, indent=2)

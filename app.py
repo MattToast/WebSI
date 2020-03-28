@@ -20,8 +20,8 @@ def check_auth(username, password):
         with open(os.path.join(appDir, 'admin.json'), 'r') as jsonData:
             data = jsonData.read()
         obj = json.loads(data)
-        compU = str(hashlib.md5(username.encode()).hexdigest())
-        compP = str(hashlib.md5(password.encode()).hexdigest())
+        compU = str(hashlib.sha256(username.encode()).hexdigest())
+        compP = str(hashlib.sha256(password.encode()).hexdigest())
         print()
         print(compU)
         print()
