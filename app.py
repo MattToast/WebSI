@@ -6,11 +6,7 @@ import os
 
 app = Flask(__name__)
 
-with open('admin.json') as jsonData:
-    data = jsonData.read()
-
-info = json.loads(data)
-appDir = info['path']
+appDir = 'EnterPath'
 shareDir = os.path.join(appDir, "static/res/share/")
 
 def check_auth(username, password):
