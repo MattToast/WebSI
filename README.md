@@ -1,6 +1,6 @@
 # Supplimental Instruction Website
 
-TODO: Describe
+A simple flask app to share files over the web
 
 ## Application Use
 
