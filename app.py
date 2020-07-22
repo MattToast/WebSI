@@ -6,7 +6,7 @@ import os
 
 app = Flask(__name__)
 
-appDir = 'EnterPath'
+appDir = '/home/mrdro/purdue/si/mattWebSI'
 shareDir = os.path.join(appDir, "static/res/share/")
 
 def check_auth(username, password):
