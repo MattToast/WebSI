@@ -14,11 +14,9 @@ if __name__ == "__main__":
     with open('app.py', 'r') as file:
         lines = file.readlines()
 
-    index = 0
-    for line in lines:
+    for index, line in enumerate(lines):
         if 'appDir = '  in line:
             break
-        index += 1
     
     lines[index] = 'appDir = \'' + newPath + '\'\n'
     
