@@ -27,10 +27,15 @@ if __name__ == "__main__":
 
     with open('admin.json', 'r') as admin:
         data = json.load(admin)
-
     
     username = str(hashlib.sha256(input('Please enter an admin username: ').encode()).hexdigest())
-    password = str(hashlib.sha256(getpass.getpass('Please enter an admin password: ').encode()).hexdigest())
+    password = getpass.getpass('Please enter an admin password: ')
+    
+    while len(password) < 8:
+        print("Password should be 8 or more characters long")
+        password = getpass.getpass('Please enter an admin password: ')
+
+    password = str(hashlib.sha256(password.encode()).hexdigest())
     passeord_re_enter = str(hashlib.sha256(getpass.getpass('Please re-enter the password: ').encode()).hexdigest())
 
     if password == passeord_re_enter: 
