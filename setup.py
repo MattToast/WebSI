@@ -1,6 +1,7 @@
 import json
 import os
 import hashlib
+import getpass
 
 if __name__ == "__main__":
     newPath = os.getcwd()
@@ -13,11 +14,9 @@ if __name__ == "__main__":
     with open('app.py', 'r') as file:
         lines = file.readlines()
 
-    index = 0
-    for line in lines:
+    for index, line in enumerate(lines):
         if 'appDir = '  in line:
             break
-        index += 1
     
     lines[index] = 'appDir = \'' + newPath + '\'\n'
     
@@ -26,9 +25,23 @@ if __name__ == "__main__":
 
     with open('admin.json', 'r') as admin:
         data = json.load(admin)
+    
+    username = str(hashlib.sha256(input('Please enter an admin username: ').encode()).hexdigest())
+    password = getpass.getpass('Please enter an admin password: ')
+    
+    while len(password) < 8:
+        print("Password should be 8 or more characters long")
+        password = getpass.getpass('Please enter an admin password: ')
 
-    data['username'] = str(hashlib.sha256(input('Please enter an admin username: ').encode()).hexdigest())
-    data['password'] = str(hashlib.sha256(input('Please enter an admin password: ').encode()).hexdigest())
+    password = str(hashlib.sha256(password.encode()).hexdigest())
+    passeord_re_enter = str(hashlib.sha256(getpass.getpass('Please re-enter the password: ').encode()).hexdigest())
+
+    if password == passeord_re_enter: 
+        data['username'] = username
+        data['password'] = password
+        print("Username and password have been updated")
+    else:
+        print("Passwords do not match, username and password are unchanged")
 
     with open('admin.json', 'w') as admin:
         json.dump(data, admin, indent=2)
