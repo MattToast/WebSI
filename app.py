@@ -61,7 +61,7 @@ def updateFiles():
 
         elif request.form and request.form["filename"]:
             filename = request.form["filename"]
-            print(filename)
+            print(request.form["filename"])
             if os.path.isfile(os.path.join(shareDir, filename)):
                 os.remove(os.path.join(shareDir, filename))
 
