@@ -6,7 +6,7 @@ import os
 
 app = Flask(__name__)
 
-appDir = 'path'
+appDir = '/home/mrdro/purdue/si/mattWebSI'
 shareDir = os.path.join(appDir, "static/res/share/")
 
 def check_auth(username, password):
@@ -61,6 +61,7 @@ def updateFiles():
 
         elif request.form and request.form["filename"]:
             filename = request.form["filename"]
+            print(filename)
             if os.path.isfile(os.path.join(shareDir, filename)):
                 os.remove(os.path.join(shareDir, filename))
 

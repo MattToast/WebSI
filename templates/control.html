@@ -34,13 +34,16 @@
         <h2>Remove File</h2>
         <hr>
 
-        <form action="/control" method="POST" enctype="multipart/form-data">
-            <div class="form-group">
+        <form action="/control" method="POST">
+            <!-- <div class="form-group">
                 <label>Type a File Name</label>
                 <div class="custom-file">
                     <input type="text" placeholder="example.txt" name="filename" id="filename">
                 </div>
-            </div>
+            </div> -->
+
+            <input type="checkbox" id="filename" name="filename" value="yo.txt">
+            <label for="filename"> yo.txt</label><br><br>
 
             <button type="submit">Remove</button>
         </form>
