@@ -9,7 +9,7 @@ function placeFiles() {
             for (i = 0; i < data.files.length; i++) {
                 var checkbox = document.createElement('input');
                 checkbox.type = "checkbox";
-                checkbox.name = "filename";
+                checkbox.name = "file" + i;
                 checkbox.value = data.files[i];
                 checkbox.id = data.files[i];
 

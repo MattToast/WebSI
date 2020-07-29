@@ -9,6 +9,7 @@ app = Flask(__name__)
 appDir = '/home/mrdro/purdue/si/mattWebSI'
 shareDir = os.path.join(appDir, "static/res/share/")
 
+
 def check_auth(username, password):
     try:
         with open(os.path.join(appDir, 'admin.json'), 'r') as jsonData:
@@ -59,11 +60,11 @@ def updateFiles():
 
             return redirect(request.url)
 
-        elif request.form and request.form["filename"]:
-            filename = request.form["filename"]
-            print(request.form["filename"])
-            if os.path.isfile(os.path.join(shareDir, filename)):
-                os.remove(os.path.join(shareDir, filename))
+        elif request.form and request.form["delete"]:
+            file_names = dict(request.form)
+            for file in file_names.values():
+                if os.path.isfile(os.path.join(shareDir, file)):
+                    os.remove(os.path.join(shareDir, file))
 
             return redirect(request.url)
 
