@@ -33,22 +33,10 @@
     <div class="Remove">
         <h2>Remove File</h2>
         <hr>
-
-        <form action="/control" method="POST" enctype="multipart/form-data">
-            <div class="form-group">
-                <label>Type a File Name</label>
-                <div class="custom-file">
-                    <input type="text" placeholder="example.txt" name="filename" id="filename">
-                </div>
-            </div>
-
-            <button type="submit">Remove</button>
+        <form action="/control" method="POST" id="removablelist">
+            <button type="submit">Remove</button><br>
+            <input type="hidden" id="delete" name="delete" value="1">
         </form>
-        <div class="listFiles">
-            <h3><u>Removable Files</u></h3>
-            <ul id="list">
-            </ul>
-        </div>
     </div>
 
     <div class="Return">
