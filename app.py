@@ -8,7 +8,7 @@ import os
 app = Flask(__name__)
 
 # basic paths to use
-appDir = 'PATH'
+appDir = 'Path'
 shareDir = os.path.join(appDir, "static/res/share/")
 
 
