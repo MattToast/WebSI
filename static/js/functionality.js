@@ -34,9 +34,16 @@ function placeFiles() {
 }
 
 function writeTitle () {
-  var title = document.createElement('h1');
-  title.textContent = 'Matt\'s SI Resources';
-  document.getElementById("title").prepend(title);
+  $.ajax({
+    url: "/design",
+    type: 'GET',
+    success: function (data) {
+      var title = document.createElement('h1');
+      title.textContent = 'Matt\'s SI Resources';
+      document.getElementById("title").prepend(title);
+      alert(data.title);
+    }
+  });
 }
 
 $(document).ready(main);

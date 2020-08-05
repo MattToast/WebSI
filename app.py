@@ -58,6 +58,13 @@ def getFiles():
     return jsonify({"files": listFiles})
 
 
+@app.route('/design', methods=['GET'])
+def getDesignStrings():
+    with open(os.path.join(appDir, 'design.json'), 'r') as json_file:
+            design_json = json.load(json_file)
+    return jsonify(design_json)
+
+
 @app.route('/control', methods=["GET", "POST"])
 @auth_required
 def updateFiles():
