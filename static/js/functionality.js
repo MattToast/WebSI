@@ -39,9 +39,8 @@ function writeTitle () {
     type: 'GET',
     success: function (data) {
       var title = document.createElement('h1');
-      title.textContent = 'Matt\'s SI Resources';
+      title.textContent = data.title;
       document.getElementById("title").prepend(title);
-      alert(data.title);
     }
   });
 }

@@ -10,12 +10,13 @@ app = Flask(__name__)
 # basic paths to use
 appDir = '/home/mrdro/purdue/si/mattWebSI'
 shareDir = os.path.join(appDir, "static/res/share/")
+jsonDir = os.path.join(appDir, "static/json/")
 
 
 def check_auth(username, password):
     # check that a provided user name and password match the json
     try:
-        with open(os.path.join(appDir, 'admin.json'), 'r') as jsonData:
+        with open(os.path.join(jsonDir, 'admin.json'), 'r') as jsonData:
             data = jsonData.read()
         obj = json.loads(data)
         compU = str(hashlib.sha256(username.encode()).hexdigest())
@@ -60,7 +61,7 @@ def getFiles():
 
 @app.route('/design', methods=['GET'])
 def getDesignStrings():
-    with open(os.path.join(appDir, 'design.json'), 'r') as json_file:
+    with open(os.path.join(jsonDir, 'design.json'), 'r') as json_file:
             design_json = json.load(json_file)
     return jsonify(design_json)
 
