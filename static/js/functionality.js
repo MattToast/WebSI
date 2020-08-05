@@ -1,8 +1,7 @@
 function main() {
   // What to execute when script is run
-  writeTitle();
+  stylePage();
   placeFiles();
-  // alert(window.location.pathname);
 }
 
 function scrollPage() {
@@ -33,7 +32,7 @@ function placeFiles() {
   });
 }
 
-function writeTitle () {
+function stylePage () {
   $.ajax({
     url: "/design",
     type: 'GET',

@@ -7,6 +7,7 @@ import getpass
 def main():
     create_missing_dirs()
     set_admin()
+    design_site()
 
 def create_missing_dirs():
     attmept_to_make_dir("./static/res/share/")
@@ -54,6 +55,12 @@ def set_credentials():
     else:
         print("Passwords do not match, changes are being ignored")
         exit()
+
+def design_site():
+    design_json = {}
+    design_json['title'] = input("Please enter a title for your site: ")
+    with open('./static/json/design.json', 'w') as design:
+        json.dump(design_json, design, indent=2)
 
 if __name__ == "__main__":
     main()
