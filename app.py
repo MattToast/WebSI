@@ -99,11 +99,6 @@ def updateFiles():
 
 
 if __name__ == "__main__":
-    # setup locally for testing
-    # check that a share dire exists, if it doesn't create it
-    if not os.path.exists("./static/res/share/"):
-        os.mkdir("./static/res/share/")
-
     # luanch the app, print a message when closed
     app.run(host='localhost', port=8080)
     print("\nApplication Terminated")

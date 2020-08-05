@@ -5,7 +5,20 @@ import getpass
 
 
 def main():
+    create_missing_dirs()
     set_admin()
+
+def create_missing_dirs():
+    attmept_to_make("./static/res/share/")
+    attmept_to_make("./static/json")
+
+def attmept_to_make(path):
+    # check that a dir exists, if it doesn't attempt to create it
+    if not os.path.exists(path):
+        try:
+            os.mkdir(path)
+        except Exception:
+            print("Something went wrong creating" + path)
 
 def set_admin():
     admin_json = {};
