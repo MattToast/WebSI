@@ -1,5 +1,6 @@
 function main() {
   // What to execute when script is run
+  writeTitle();
   placeFiles();
   // alert(window.location.pathname);
 }
@@ -30,6 +31,12 @@ function placeFiles() {
       }
     }
   });
+}
+
+function writeTitle () {
+  var title = document.createElement('h1');
+  title.textContent = 'Matt\'s SI Resources';
+  document.getElementById("title").prepend(title);
 }
 
 $(document).ready(main);
