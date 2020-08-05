@@ -8,9 +8,16 @@ import os
 app = Flask(__name__)
 
 # basic paths to use
-appDir = '/home/mrdro/purdue/si/mattWebSI'
-shareDir = os.path.join(appDir, "static/res/share/")
-jsonDir = os.path.join(appDir, "static/json/")
+try:
+    with open('./static/json/admin.json', 'r') as admin:
+        admin_json = json.load(admin)
+        appDir = admin_json['path']
+        shareDir = os.path.join(appDir, "static/res/share/")
+        jsonDir = os.path.join(appDir, "static/json/")
+except Exception as e:
+    print(e)
+    print("Could not start the app, try running 'setup.py'")
+    exit()
 
 
 def check_auth(username, password):
