@@ -9,10 +9,10 @@ def main():
     set_admin()
 
 def create_missing_dirs():
-    attmept_to_make("./static/res/share/")
-    attmept_to_make("./static/json")
+    attmept_to_make_dir("./static/res/share/")
+    attmept_to_make_dir("./static/json")
 
-def attmept_to_make(path):
+def attmept_to_make_dir(path):
     # check that a dir exists, if it doesn't attempt to create it
     if not os.path.exists(path):
         try:
