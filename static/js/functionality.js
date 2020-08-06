@@ -40,6 +40,8 @@ function stylePage () {
       var title = document.createElement('h1');
       title.textContent = data.title;
       document.getElementById("title").prepend(title);
+
+      document.getElementById("schedule_title").textContent = data.schedule_table.title
     }
   });
 }

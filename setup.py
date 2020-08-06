@@ -31,7 +31,7 @@ class ScheduleTable:
         self.__rows = {}
 
     def add_row(self, block_type, day, place, time):
-        self.__rows[str(len(self.__rows.keys()))] = self.Row(block_type, day, place, time).to_dict()
+        self.__rows["r" + str(len(self.__rows.keys()))] = self.Row(block_type, day, place, time).to_dict()
 
     def to_dict(self):
         schedule_dict = {
