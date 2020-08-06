@@ -8,14 +8,22 @@ import os
 app = Flask(__name__)
 
 # basic paths to use
-appDir = 'PATH'
-shareDir = os.path.join(appDir, "static/res/share/")
+try:
+    with open('./static/json/admin.json', 'r') as admin:
+        admin_json = json.load(admin)
+        appDir = admin_json['path']
+        shareDir = os.path.join(appDir, "static/res/share/")
+        jsonDir = os.path.join(appDir, "static/json/")
+except Exception as e:
+    print(e)
+    print("Could not start the app, try running 'setup.py'")
+    exit()
 
 
 def check_auth(username, password):
     # check that a provided user name and password match the json
     try:
-        with open(os.path.join(appDir, 'admin.json'), 'r') as jsonData:
+        with open(os.path.join(jsonDir, 'admin.json'), 'r') as jsonData:
             data = jsonData.read()
         obj = json.loads(data)
         compU = str(hashlib.sha256(username.encode()).hexdigest())
@@ -58,6 +66,13 @@ def getFiles():
     return jsonify({"files": listFiles})
 
 
+@app.route('/design', methods=['GET'])
+def getDesignStrings():
+    with open(os.path.join(jsonDir, 'design.json'), 'r') as json_file:
+            design_json = json.load(json_file)
+    return jsonify(design_json)
+
+
 @app.route('/control', methods=["GET", "POST"])
 @auth_required
 def updateFiles():
@@ -84,11 +99,6 @@ def updateFiles():
 
 
 if __name__ == "__main__":
-    # setup locally for testing
-    # check that a share dire exists, if it doesn't create it
-    if not os.path.exists("./static/res/share/"):
-        os.mkdir("./static/res/share/")
-
     # luanch the app, print a message when closed
     app.run(host='localhost', port=8080)
     print("\nApplication Terminated")
