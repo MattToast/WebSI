@@ -8,12 +8,37 @@ def main():
     FileStructureSetUp().set_up_files()
 
 class ScheduleTable:
-    def __init__(self):
-        self.title = ""
-        self.rows = {}
+    class Row:
+        def __init__(self, block_type="NA", day="NA", place="NA", time="NA"):
+            self.__type = block_type
+            self.__day = day
+            self.__place = place
+            self.__time = time
 
-    def add_row(self):
-        pass
+        def to_dict(self):
+            row_dict = {
+                "type": self.__type,
+                "day": self.__day,
+                "place": self.__place,
+                "time": self.__time
+            }
+            return row_dict
+
+    def __init__(self, title=""):
+        if title == "":
+            title = "Schedule"
+        self.__title = title
+        self.__rows = {}
+
+    def add_row(self, block_type, day, place, time):
+        self.__rows[str(len(self.__rows.keys()))] = self.Row(block_type, day, place, time).to_dict()
+
+    def to_dict(self):
+        schedule_dict = {
+            "title": self.__title,
+            "rows": self.__rows
+        }
+        return schedule_dict
 
 
 class FileStructureSetUp():
@@ -76,7 +101,16 @@ class FileStructureSetUp():
     def design_site(self):
         design_json = {}
         design_json['title'] = input("Please enter a title for your site: ")
-        table = ScheduleTable()
+        schedule_table = ScheduleTable(input("Please enter a schedule title: "))
+        add_rows = 'y'
+        while add_rows == 'y' or add_rows == 'Y' or str(add_rows).lower() == 'yes':
+            block_type = input("Enter block type (Usually 'SI Session' or 'Office Hours'): ")
+            day = input("Enter day of this block: ")
+            place = input("Enter place where the block occurs: ")
+            time = input("Enter time when the block occurs (ex, 5:30-6:20): ")
+            schedule_table.add_row(block_type, day, place, time)
+            add_rows = input('Add another row? (y/n): ')
+        design_json['schedule_table'] = schedule_table.to_dict()
         with open('./static/json/design.json', 'w') as design:
             json.dump(design_json, design, indent=2)
 
