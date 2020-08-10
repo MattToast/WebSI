@@ -33,16 +33,21 @@ function placeFiles() {
 }
 
 function stylePage() {
+  // Get the design of the website
   $.ajax({
     url: "/design",
     type: 'GET',
     success: function (data) {
+      // Make and place title of the website
       var title = document.createElement('h1');
       title.textContent = data.title;
       document.getElementById("title").prepend(title);
 
+      // Place the schedule title
       document.getElementById("schedule_title").textContent = data.schedule_table.title;
       var schedule_table = document.getElementById("schedule");
+
+      // Get the list of rows in the table, make and place them
       for (var i = 0; i < data.schedule_table.rows.length; i++){
         var type = document.createElement('td');
         var day = document.createElement('td');
