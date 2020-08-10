@@ -19,7 +19,7 @@ function placeFiles() {
     success: function (data) {
       // Place Buttons for files
       var table = document.getElementById("files_table");
-      for (i = 0; i < data.files.length; i++) {
+      for (var i = 0; i < data.files.length; i++) {
         var row = table.insertRow(1 + i);
 
         // Make label
@@ -33,26 +33,31 @@ function placeFiles() {
 }
 
 function stylePage() {
+  // Get the design of the website
   $.ajax({
     url: "/design",
     type: 'GET',
     success: function (data) {
+      // Make and place title of the website
       var title = document.createElement('h1');
       title.textContent = data.title;
       document.getElementById("title").prepend(title);
 
+      // Place the schedule title
       document.getElementById("schedule_title").textContent = data.schedule_table.title;
       var schedule_table = document.getElementById("schedule");
-      Object.keys(data.schedule_table.rows).forEach(function (item) {
+
+      // Get the list of rows in the table, make and place them
+      for (var i = 0; i < data.schedule_table.rows.length; i++){
         var type = document.createElement('td');
         var day = document.createElement('td');
         var place = document.createElement('td');
         var time = document.createElement('td');
 
-        type.innerText = data.schedule_table.rows[item].type;
-        day.innerText = data.schedule_table.rows[item].day;
-        place.innerText = data.schedule_table.rows[item].place;
-        time.innerText = data.schedule_table.rows[item].time;
+        type.innerText = data.schedule_table.rows[i].type;
+        day.innerText = data.schedule_table.rows[i].day;
+        place.innerText = data.schedule_table.rows[i].place;
+        time.innerText = data.schedule_table.rows[i].time;
 
         var new_row = document.createElement('tr');
         new_row.appendChild(type);
@@ -60,7 +65,7 @@ function stylePage() {
         new_row.appendChild(place);
         new_row.appendChild(time);
         schedule_table.appendChild(new_row);
-      });
+      }
     }
   });
 }
