@@ -68,6 +68,11 @@ class ScheduleTable:
         }
         return schedule_dict
 
+class MessageToStudents:
+    def __init__(self, title: str = "", message: str = "", author: str = ""):
+        self.title = title
+        self.message = message
+        self.author = author
 
 class FileStructureSetUp():
     def __init__(self):
