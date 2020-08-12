@@ -129,8 +129,7 @@ class FileStructureSetUp():
 
     def set_credentials(self):
         """Gets and hashes the credentials"""
-        username = str(hashlib.sha256(
-            input('Please enter an admin username: ').encode()).hexdigest())
+        username = str(hashlib.sha256(input('Please enter an admin username: ').encode()).hexdigest())
         password = getpass.getpass('Please enter an admin password: ')
 
         while len(password) < 8:
@@ -138,8 +137,7 @@ class FileStructureSetUp():
             password = getpass.getpass('Please enter an admin password: ')
 
         password = str(hashlib.sha256(password.encode()).hexdigest())
-        passeord_re_enter = str(hashlib.sha256(getpass.getpass(
-            'Please re-enter the password: ').encode()).hexdigest())
+        passeord_re_enter = str(hashlib.sha256(getpass.getpass('Please re-enter the password: ').encode()).hexdigest())
 
         if password == passeord_re_enter:
             print("Username and password have been updated")
