@@ -74,6 +74,20 @@ class MessageToStudents:
         self.message = message
         self.author = author
 
+    def write_message(self):
+        self.title = input("Enter an additional message title: ")
+        self.message = input("Enter an additional message: ")
+        self.author = input("Enter an author name: ")
+        return self
+
+    def to_dict(self):
+        message_dict = {
+            "title" : self.title,
+            "message" : self.message,
+            "author" : self.author
+        }
+        return message_dict
+
 class FileStructureSetUp():
     def __init__(self):
         pass
@@ -154,6 +168,7 @@ class FileStructureSetUp():
             schedule_table.add_row(block_type, day, place, time)
             add_rows = input('Add another row? (y/n): ')
         design_json['schedule_table'] = schedule_table.to_dict()
+        design_json['message_to_students'] = MessageToStudents().write_message().to_dict()
         with open('./static/json/design.json', 'w') as design:
             json.dump(design_json, design, indent=2)
 

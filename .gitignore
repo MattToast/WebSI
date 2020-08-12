@@ -2,3 +2,4 @@
 static/res/share/*.*
 static/json/*.*
 venv/
+backup.json
