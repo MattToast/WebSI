@@ -57,6 +57,19 @@ class ScheduleTable:
         """
         self.__rows.append(self.Row(block_type, day, place, time).to_dict())
 
+    def add_many_rows(self):
+        """Repeatedly asks the user to add information for new rows untill they are done"""
+        print('\nSchedule Table Rows')
+        add_rows = 'y'
+        while add_rows == 'y' or add_rows == 'Y' or str(add_rows).lower() == 'yes':
+            block_type = input("Enter block type (Usually 'SI Session' or 'Office Hours'): ")
+            day = input("Enter day of this block: ")
+            place = input("Enter place where the block occurs: ")
+            time = input("Enter time when the block occurs (ex, 5:30-6:20): ")
+            self.add_row(block_type, day, place, time)
+            add_rows = input('Add another row? (y/n): ')
+            print()
+
     def to_dict(self) -> dict:
         """
         Converts table into a dict to be made into a json
@@ -116,8 +129,7 @@ class FileStructureSetUp():
 
     def set_credentials(self):
         """Gets and hashes the credentials"""
-        username = str(hashlib.sha256(
-            input('Please enter an admin username: ').encode()).hexdigest())
+        username = str(hashlib.sha256(input('Please enter an admin username: ').encode()).hexdigest())
         password = getpass.getpass('Please enter an admin password: ')
 
         while len(password) < 8:
@@ -125,8 +137,7 @@ class FileStructureSetUp():
             password = getpass.getpass('Please enter an admin password: ')
 
         password = str(hashlib.sha256(password.encode()).hexdigest())
-        passeord_re_enter = str(hashlib.sha256(getpass.getpass(
-            'Please re-enter the password: ').encode()).hexdigest())
+        passeord_re_enter = str(hashlib.sha256(getpass.getpass('Please re-enter the password: ').encode()).hexdigest())
 
         if password == passeord_re_enter:
             print("Username and password have been updated")
@@ -140,14 +151,7 @@ class FileStructureSetUp():
         design_json = {}
         design_json['title'] = input("Please enter a title for your site: ")
         schedule_table = ScheduleTable(input("Please enter a schedule title: "))
-        add_rows = 'y'
-        while add_rows == 'y' or add_rows == 'Y' or str(add_rows).lower() == 'yes':
-            block_type = input("Enter block type (Usually 'SI Session' or 'Office Hours'): ")
-            day = input("Enter day of this block: ")
-            place = input("Enter place where the block occurs: ")
-            time = input("Enter time when the block occurs (ex, 5:30-6:20): ")
-            schedule_table.add_row(block_type, day, place, time)
-            add_rows = input('Add another row? (y/n): ')
+        schedule_table.add_many_rows()
         design_json['schedule_table'] = schedule_table.to_dict()
         with open('./static/json/design.json', 'w') as design:
             json.dump(design_json, design, indent=2)
