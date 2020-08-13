@@ -6,11 +6,19 @@
     <title>Edit Design</title>
     <link rel="icon" href="{{url_for('static', filename='res/img/purdue_p.png')}}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="{{url_for('static', filename='js/edit_design.js')}}"></script>
 </head>
 
 <body>
     <h1>Edit Your Website Design Here</h1>
     <hr>
+
+    <form action="/control/edit-design">
+        <textarea id="message" name="message" rows="4" cols="100"></textarea>
+        <br><br>
+        <input type="submit" value="Submit">
+    </form>
+    <script>populate_design_sheet()</script>
 </body>
 
 </html>
