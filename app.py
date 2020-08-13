@@ -73,7 +73,7 @@ def getDesignStrings():
     return jsonify(design_json)
 
 
-@app.route('/control', methods=["GET", "POST"])
+@app.route('/control/', methods=["GET", "POST"])
 @auth_required
 def updateFiles():
     # if post request is made
@@ -97,6 +97,11 @@ def updateFiles():
             return redirect(request.url)
     return render_template('control.html')
 
+
+@app.route('/control/edit-design/')
+@auth_required
+def edit_design():
+    return render_template("edit-design.html")
 
 if __name__ == "__main__":
     # luanch the app, print a message when closed
