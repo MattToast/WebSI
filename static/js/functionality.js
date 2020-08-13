@@ -36,7 +36,7 @@ function stylePage() {
   // Get the design of the website
   $.ajax({
     url: "/design",
-    type: 'GET',
+    type: 'POST',
     success: function (data) {
       // Make and place title of the website
       var title = document.createElement('h1');

@@ -66,7 +66,7 @@ def getFiles():
     return jsonify({"files": listFiles})
 
 
-@app.route('/design', methods=['GET'])
+@app.route('/design', methods=['POST'])
 def getDesignStrings():
     with open(os.path.join(jsonDir, 'design.json'), 'r') as json_file:
         design_json = json.load(json_file)
