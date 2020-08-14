@@ -66,6 +66,11 @@ function stylePage() {
         new_row.appendChild(time);
         schedule_table.appendChild(new_row);
       }
+
+      // Format the message
+      document.getElementById("messageTitle").innerHTML = data.message_to_students.title
+      document.getElementById("messageText").innerHTML = data.message_to_students.message
+      document.getElementById("signed").innerHTML = "- " + data.message_to_students.author
     }
   });
 }
