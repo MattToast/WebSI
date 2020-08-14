@@ -98,9 +98,12 @@ def updateFiles():
     return render_template('control.html')
 
 
-@app.route('/control/edit-design/')
+@app.route('/control/edit-design/', methods=["GET", "POST"])
 @auth_required
 def edit_design():
+    if request.method == "POST":
+        print("FOO")
+        return redirect(request.url)
     return render_template("edit-design.html")
 
 if __name__ == "__main__":

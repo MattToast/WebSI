@@ -5,5 +5,5 @@ function populate_design_sheet() {
         success: function (data) {
             document.getElementById("message").innerHTML = data.message_to_students.message;
         }
-      });
+    });
 }

@@ -20,7 +20,6 @@ function placeFiles() {
                 removableList.appendChild(checkbox);
                 removableList.appendChild(label);
                 removableList.appendChild(document.createElement('br'));
-
             }
         }
     });

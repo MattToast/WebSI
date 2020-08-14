@@ -13,10 +13,10 @@
     <h1>Edit Your Website Design Here</h1>
     <hr>
 
-    <form action="/control/edit-design">
+    <form action="/control/edit-design" method="POST" id="design_changes">
         <textarea id="message" name="message" rows="4" cols="100"></textarea>
         <br><br>
-        <input type="submit" value="Submit">
+        <button type="submit">Submit Changes</button>
     </form>
     <script>populate_design_sheet()</script>
 </body>
