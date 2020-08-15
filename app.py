@@ -102,7 +102,11 @@ def updateFiles():
 @auth_required
 def edit_design():
     if request.method == "POST":
-        print("FOO")
+        with open(os.path.join(jsonDir, 'design.json'), 'r') as json_file:
+            design_json = json.load(json_file)
+        design_json['message_to_students']['message'] = request.form['message']
+        with open(os.path.join(jsonDir, 'design.json'), 'w') as json_file:
+            json.dump(design_json, json_file, indent=2)
         return redirect(request.url)
     return render_template("edit-design.html")
 
