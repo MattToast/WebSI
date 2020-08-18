@@ -1,4 +1,6 @@
 .vscode/
+__pycache__
 static/res/share/*.*
 static/json/*.*
 venv/
+backup.json

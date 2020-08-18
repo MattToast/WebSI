@@ -66,14 +66,14 @@ def getFiles():
     return jsonify({"files": listFiles})
 
 
-@app.route('/design', methods=['GET'])
+@app.route('/design', methods=['POST'])
 def getDesignStrings():
     with open(os.path.join(jsonDir, 'design.json'), 'r') as json_file:
         design_json = json.load(json_file)
     return jsonify(design_json)
 
 
-@app.route('/control', methods=["GET", "POST"])
+@app.route('/control/', methods=["GET", "POST"])
 @auth_required
 def updateFiles():
     # if post request is made
@@ -97,6 +97,18 @@ def updateFiles():
             return redirect(request.url)
     return render_template('control.html')
 
+
+@app.route('/control/edit-design/', methods=["GET", "POST"])
+@auth_required
+def edit_design():
+    if request.method == "POST":
+        with open(os.path.join(jsonDir, 'design.json'), 'r') as json_file:
+            design_json = json.load(json_file)
+        design_json['message_to_students']['message'] = request.form['message']
+        with open(os.path.join(jsonDir, 'design.json'), 'w') as json_file:
+            json.dump(design_json, json_file, indent=2)
+        return redirect(request.url)
+    return render_template("edit-design.html")
 
 if __name__ == "__main__":
     # luanch the app, print a message when closed

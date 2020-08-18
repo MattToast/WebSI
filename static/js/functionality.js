@@ -36,7 +36,7 @@ function stylePage() {
   // Get the design of the website
   $.ajax({
     url: "/design",
-    type: 'GET',
+    type: 'POST',
     success: function (data) {
       // Make and place title of the website
       var title = document.createElement('h1');
@@ -66,6 +66,11 @@ function stylePage() {
         new_row.appendChild(time);
         schedule_table.appendChild(new_row);
       }
+
+      // Format the message
+      document.getElementById("messageTitle").innerHTML = data.message_to_students.title
+      document.getElementById("messageText").innerHTML = data.message_to_students.message
+      document.getElementById("signed").innerHTML = "- " + data.message_to_students.author
     }
   });
 }

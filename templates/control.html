@@ -13,7 +13,7 @@
     <h1>Welcome to the Matt SI Control Portal!</h1>
     <hr>
 
-    <div class="Upload">
+    <div id="Upload">
         <h2>Upload File</h2>
         <hr>
 
@@ -30,7 +30,7 @@
         </form>
     </div>
 
-    <div class="Remove">
+    <div id="Remove">
         <h2>Remove File</h2>
         <hr>
         <form action="/control" method="POST" id="removablelist">
@@ -39,7 +39,13 @@
         </form>
     </div>
 
-    <div class="Return">
+    <div id="GoToDesign">
+        <h2>Edit The Design</h2>
+        <hr>
+        <a href="/control/edit-design"><button>Edit Now</button></a>
+    </div>
+
+    <div id="Return">
         <h2>Return to Homepage</h2>
         <hr>
         <a href='/'><button>Return</button></a>
