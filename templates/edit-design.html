@@ -10,10 +10,16 @@
 </head>
 
 <body>
-    <h1>Edit Your Message Here</h1>
-    <hr>
-
     <form action="/control/edit-design" method="POST" id="design_changes">
+        <!-- Message Title -->
+        <h1>Edit Your Message Title Here</h1>
+        <hr>
+        <input type="text" id="message_title" name="message_title" size="50" value="foo">
+        <br><br>
+
+        <!-- Message Body -->
+        <h1>Edit Your Message Here</h1>
+        <hr>
         <textarea id="message" name="message" rows="4" cols="100"></textarea>
         <br><br>
         <button type="submit">Save Changes</button>
